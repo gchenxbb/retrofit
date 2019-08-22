@@ -8,7 +8,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrifitUtil {
-    public static String hostLogin = "https://www.apiopen.top";//登陆主机地址
+    public static String hostLogin = "https://my-json-server.typicode.com";//主机地址
     private Object apiService;//api接口
     private Retrofit retrofit;
     private OkHttpClient okHttpClient;
