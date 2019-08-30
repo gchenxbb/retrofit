@@ -17,12 +17,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
-
     public static final String TAG = "MainActivity";
-    private String loginKey = "00d91e8e0cca2b76f515926a36db68f5";
-    private String phone = "13594347817";
-    private String passwd = "123456";
-
     private Button mBtn;
     RestfulApi api;
 
@@ -43,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
                     public void onResponse(Call<PostBeanList> call, Response<PostBeanList> response) {
                         if (response.body() != null) {
                             PostBeanList lists = response.body();
-                            Log.d(TAG, lists.toString());
                             if (lists != null && lists.getPostdata() != null && lists.getPostdata().size() > 0) {
                                 for (PostBean bean : lists.getPostdata()) {
                                     Log.d(TAG, bean.getId() + bean.getTitle());
