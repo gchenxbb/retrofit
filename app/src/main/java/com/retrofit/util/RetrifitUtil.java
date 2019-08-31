@@ -1,4 +1,6 @@
-package com.retrofit.app;
+package com.retrofit.util;
+
+import com.retrofit.app.RestfulApi;
 
 import java.util.concurrent.TimeUnit;
 

@@ -1,4 +1,4 @@
-package com.retrofit.app;
+package com.retrofit.bean;
 
 import java.io.Serializable;
 import java.util.List;
