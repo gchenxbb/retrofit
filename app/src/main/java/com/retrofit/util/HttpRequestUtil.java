@@ -6,6 +6,7 @@ import com.retrofit.app.RestfulApi;
 import com.retrofit.bean.Comment;
 import com.retrofit.bean.GetBean;
 import com.retrofit.bean.GetBeanList;
+import com.retrofit.bean.Post;
 
 import java.util.List;
 
@@ -69,5 +70,26 @@ public class HttpRequestUtil {
         });
     }
 
+    public static void callPost3(final CallBack callBack) {
+        Call<Post> call = api.postItems(100);
+        call.enqueue(new Callback<Post>() {
+            @Override
+            public void onResponse(Call<Post> call, Response<Post> response) {
+                if (response.body() != null) {
+                    Post post = response.body();
+                    if (post != null && post.getPostId() == 100) {
+                        callBack.onListener(true);
+                    }
+                } else {
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Post> call, Throwable t) {
+                Log.d(TAG, t.getMessage());
+                callBack.onListener(false);
+            }
+        });
+    }
 
 }

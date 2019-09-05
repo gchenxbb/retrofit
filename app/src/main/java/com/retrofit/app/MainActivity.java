@@ -1,5 +1,6 @@
 package com.retrofit.app;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -7,26 +8,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.retrofit.bean.Comment;
-import com.retrofit.bean.GetBean;
-import com.retrofit.bean.GetBeanList;
 import com.retrofit.character.CharacterUtil;
+import com.retrofit.imitate.DestCiew;
+import com.retrofit.imitate.DyncmicProxy;
+import com.retrofit.imitate.InterfaceApi;
 import com.retrofit.util.CallBack;
 import com.retrofit.util.HttpRequestUtil;
-import com.retrofit.util.RetrifitUtil;
-
-import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import com.retrofit.util.ToastUtil;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, CallBack {
     public final String TAG = "MainActivity";
     private Button mBtnPost;
     private Button mBtnGet;
-
-    char a;
+    private Button btn_imitate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,12 +36,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 sb.append("-");
             }
         }
-        showToast(sb.toString());
+        ToastUtil.showToast(sb.toString());
 
         mBtnPost = findViewById(R.id.btn_retfofit_post);
         mBtnGet = findViewById(R.id.btn_retfofit_get);
+        btn_imitate = findViewById(R.id.btn_imitate);
         mBtnGet.setOnClickListener(this);
         mBtnPost.setOnClickListener(this);
+        btn_imitate.setOnClickListener(this);
 
     }
 
@@ -57,21 +53,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (id == R.id.btn_retfofit_get) {
             HttpRequestUtil.callGet(this);
         } else if (id == R.id.btn_retfofit_post) {
-            HttpRequestUtil.callPost(this);
+            HttpRequestUtil.callPost3(this);
+        } else if (id == R.id.btn_imitate) {
+            startActivity(new Intent(MainActivity.this, ImitateActivity.class));
         }
-
     }
 
     @Override
     public void onListener(boolean isSuccess) {
         if (isSuccess) {
-            showToast("请求成功！");
+            ToastUtil.showToast("请求成功！");
         } else {
-            showToast("请求失败！");
+            ToastUtil.showToast("请求失败！");
         }
     }
 
-    public void showToast(String msg) {
-        Toast.makeText(MainActivity.this, msg, Toast.LENGTH_LONG).show();
-    }
+
 }

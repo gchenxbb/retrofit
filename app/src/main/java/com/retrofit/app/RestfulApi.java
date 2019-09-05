@@ -3,11 +3,14 @@ package com.retrofit.app;
 import com.retrofit.bean.Comment;
 import com.retrofit.bean.GetBean;
 import com.retrofit.bean.GetBeanList;
+import com.retrofit.bean.Post;
 
 import java.util.List;
 
 import io.reactivex.Observable;
 import retrofit2.Call;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
@@ -25,10 +28,9 @@ public interface RestfulApi {
                                     @Query("phone") String phone,
                                     @Query("passwd") String passwd);
 
-//    接口暂不支持POST
-//    @FormUrlEncoded
-//    @POST("typicode/demo/comments?")
-//    Call<List<Comment>> getItems(@Field("postId") int postId);
+    @FormUrlEncoded
+    @POST("typicode/demo/comments?")
+    Call<Post> postItems(@Field("postId") int postId);
 
     @GET("typicode/demo/comments?")
     Call<List<Comment>> getItems(@Query("postId") int postId);
