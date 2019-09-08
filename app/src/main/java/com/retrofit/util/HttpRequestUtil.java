@@ -45,9 +45,6 @@ public class HttpRequestUtil {
         });
     }
 
-    public static void callPost(final CallBack callBack) {
-    }
-
     public static void callPost2(final CallBack callBack) {
         Call<List<Comment>> call = api.getItems(1);
         call.enqueue(new Callback<List<Comment>>() {
