@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Retrofit</string>
+    <string name="str_hi_butterknife">Hello ButterKnife!</string>
+
 </resources>
