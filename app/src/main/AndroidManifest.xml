@@ -22,8 +22,16 @@
         <activity android:name=".ImitateActivity" />
         <activity android:name=".OkioActivity" />
 
-        <activity android:name="com.retrofit.butterknife.ButterKnifeActivity">
+        <activity android:name="com.retrofit.butterknife.ButterKnifeActivity"></activity>
+
+
+        <activity android:name="com.app.dagger2.activity.LoginActivity">
+
         </activity>
+
+        <activity android:name="com.app.dagger2.activity.MyActivity" />
+
+
     </application>
 
 </manifest>
